@@ -57,14 +57,51 @@ public class Unit {
 
 		 return location;
 		}
+	
+//	 public void setRandomLocation(Grid grid) {
+//		 int randomX = randomLocation(grid.getSize());
+//		 int randomY = randomLocation(grid.getSize());
+//		 
+//		 boolean unassignedSpace = true;
+//		 
+//		 while (unassignedSpace) {
+//			 if (grid.coordinates[randomX][randomY] == " • ") {
+//				 setXPosition(randomX);
+//				 setYPosition(randomY); 
+//				 unassignedSpace = false;
+//			 }
+//		 }
+//			 
+//
+//	 }
 	 
-	 public void setRandomLocation(int size) {
-		 int randomX = randomLocation(size);
-		 int randomY = randomLocation(size);
+		public void setRandomLocation(Grid grid) {
+			boolean unassignedSpace = true;
+			int randomX = randomLocation(grid.getSize());
+			int randomY = randomLocation(grid.getSize());
 
-		 setXPosition(randomX);
-		 setYPosition(randomY);
-	 }
+//			System.out.println("X position = " + this.xPosition);
+//			System.out.println("randomX = " + randomX);
+//			System.out.println("Y position = " + this.yPosition);
+//			System.out.println("randomY = " + randomY);
+
+			while (unassignedSpace) {
+				if ((grid.coordinates[randomX][randomY] == " • ") && (grid.coordinates[randomX][randomY] != " P ") && (grid.coordinates[randomX][randomY] != " T ") && (grid.coordinates[randomX][randomY] != " E ")) {
+//					System.out.println("if");
+					setXPosition(randomX);
+					setYPosition(randomY);
+					grid.updateGrid(this.getXPosition(), this.getYPosition(), this.getCharacter());
+					unassignedSpace = false;
+					break;
+				}
+
+				else {
+//					System.out.println("else");
+					randomX = randomLocation(grid.getSize());
+					randomY = randomLocation(grid.getSize());
+				}	
+			}
+		}
 	 
 	 public void moveLeft(Grid grid) {
 		 if (this.xPosition > 0) {
@@ -109,6 +146,4 @@ public class Unit {
 			 System.out.println("You cannot move further down.");
 		 }
 	 }
-	 
-	 
 }

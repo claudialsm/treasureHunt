@@ -13,25 +13,39 @@ public class App {
 		System.out.println("Enter your name: ");
 		String name = inputObj.nextLine();
 		
-		System.out.println("Enter the grid size: ");
-		int size = Integer.parseInt(inputObj.nextLine());
+		boolean gridQuery = true;
+		int size = 0;
+		while (gridQuery) {
+			try {
+				System.out.println("Enter the grid size (3 or higher): ");
+				size = Integer.parseInt(inputObj.nextLine());
+				if (size > 2) {
+					gridQuery = false;
+				};
+			}
+			catch (Exception e) {
+				System.out.println("Oops, that didn't work!");
+			}
+
+		}
 		Grid g1 = new Grid();
 		g1.createGrid(size);
 
 		// Generate the objects on the grid
 		Player p1 = new Player(name);
-		p1.setRandomLocation(size);
-		g1.updateGrid(p1.getXPosition(), p1.getYPosition(), p1.getCharacter());
+		p1.setRandomLocation(g1);
 
 		Treasure t1 = new Treasure();
-		t1.setRandomLocation(size);
-		g1.updateGrid(t1.getXPosition(), t1.getYPosition(), t1.getCharacter());
+		t1.setRandomLocation(g1);
 
 		Enemy e1 = new Enemy();
-		e1.setRandomLocation(size);
-		g1.updateGrid(e1.getXPosition(), e1.getYPosition(), e1.getCharacter());
+		e1.setRandomLocation(g1);
+//		g1.updateGrid(e1.getXPosition(), e1.getYPosition(), e1.getCharacter());
 
 		boolean gameStarted = true;
+
+//		GameState GS = new GameState();
+//		GS.startGame();
 
 		while (gameStarted) {
 			g1.showGrid(size);

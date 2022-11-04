@@ -6,9 +6,5 @@ public class Player extends Unit {
 		setName(name); 
 		setCharacter(" P ");
 	}
-//	Dummy change from Claudia to test Jenkins
-//	Dummy change from Claudia to test Jenkins #2
-//	Dummy change from Claudia to test Jenkins #3
-//	Dummy change from Claudia to test Jenkins #4
 	 
 }

@@ -14,7 +14,7 @@ public class Grid {
 				coordinates[x][y] = " • ";
 			}
 		}
-		
+				
 //		System.out.println(size + "*" + size + " grid generated...");
 	}
 	
@@ -61,8 +61,4 @@ public class Grid {
 //		System.out.println("The distance between " + p.getName() + " and " + t.getName() + " is " + absY + " vertically.");
 	}
 }
-
-
-
-
 
